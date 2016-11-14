@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Prestamos</string>
+    <string name="btn_ok_alert">Aceptar</string>
+    <string name="user_pass_incorrect">Accesos incorrectos</string>
+    <string name="acceso_correcto">Accesos correctos</string>
+    <string name="conexion">Error en la conexión</string>
+    <string name="cargando">Cargando</string>
+    <string name="title_activity_profile">Profile</string>
+
 </resources>
