@@ -51,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        if (ParseUser.getCurrentUser() != null && ParseUser.getCurrentUser().isAuthenticated()) {
+            Intent i = new Intent(MainActivity.this, Profile.class);
+            startActivity(i);
+            finish();
+            return;
+        }
     }
 
     private void login(String userName, String password, final View btn) {
