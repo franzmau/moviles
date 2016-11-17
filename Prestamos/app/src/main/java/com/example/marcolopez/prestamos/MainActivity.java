@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         if (ParseUser.getCurrentUser() != null && ParseUser.getCurrentUser().isAuthenticated()) {
-            Intent i = new Intent(MainActivity.this, Deudas.class);
+            Intent i = new Intent(MainActivity.this, AddPrestamo.class);
             startActivity(i);
             finish();
             return;
