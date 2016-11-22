@@ -41,8 +41,8 @@ public class AmigosAdapter extends ArrayAdapter<ParseObject> {
             holder = (Holder) row.getTag();
         }
         holder.nombre.setText(data[position].getString("nombre"));
-        ImageView imageView=(ImageView) row.findViewById(R.id.img);
-        imageView.setImageResource(imageId);
+        //ImageView imageView=(ImageView) row.findViewById(R.id.img);
+        //imageView.setImageResource(imageId);
         return row;
     }
     static class Holder {
