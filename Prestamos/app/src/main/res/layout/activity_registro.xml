@@ -8,12 +8,14 @@
 
     <ScrollView
         android:layout_width="match_parent"
+        android:background="@drawable/dinero"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="15dp"
+            android:layout_marginTop="150dp"
             android:orientation="vertical">
 
             <EditText
@@ -24,8 +26,7 @@
                 android:inputType="text"
                 android:paddingLeft="15dp"
                 android:imeOptions="actionNext"
-                android:id="@+id/nombreEdtTxt"
-                android:background="@drawable/edit_text"/>
+                android:id="@+id/nombreEdtTxt"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -35,8 +36,7 @@
                 android:inputType="text"
                 android:paddingLeft="15dp"
                 android:imeOptions="actionNext"
-                android:id="@+id/usuarioEdtTxt"
-                android:background="@drawable/edit_text"/>
+                android:id="@+id/usuarioEdtTxt"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -46,8 +46,7 @@
                 android:inputType="textEmailAddress"
                 android:paddingLeft="15dp"
                 android:id="@+id/correoEdtTxt"
-                android:imeOptions="actionNext"
-                android:background="@drawable/edit_text"/>
+                android:imeOptions="actionNext"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -57,8 +56,7 @@
                 android:inputType="textPassword"
                 android:paddingLeft="15dp"
                 android:id="@+id/contrasenaEdtTxt"
-                android:imeOptions="actionNext"
-                android:background="@drawable/edit_text"/>
+                android:imeOptions="actionNext"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -68,9 +66,7 @@
                 android:inputType="textPassword"
                 android:paddingLeft="15dp"
                 android:id="@+id/confContrasenaEdtTxt"
-                android:imeOptions="actionDone"
-                android:background="@drawable/edit_text"/>
-
+                android:imeOptions="actionDone"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -85,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
-                    android:text="REGISTRARME"/>
+                    android:text="Crear cuenta"/>
             </LinearLayout>
 
         </LinearLayout>
