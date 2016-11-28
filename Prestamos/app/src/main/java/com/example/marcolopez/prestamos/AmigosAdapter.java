@@ -40,7 +40,7 @@ public class AmigosAdapter extends ArrayAdapter<ParseObject> {
         } else {
             holder = (Holder) row.getTag();
         }
-        holder.nombre.setText(data[position].getString("nombre"));
+        holder.nombre.setText(data[position].getString("username_f"));
         //ImageView imageView=(ImageView) row.findViewById(R.id.img);
         //imageView.setImageResource(imageId);
         return row;

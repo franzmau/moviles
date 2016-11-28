@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         if (ParseUser.getCurrentUser() != null && ParseUser.getCurrentUser().isAuthenticated()) {
-            Intent i = new Intent(MainActivity.this, Profile.class);
+            Intent i = new Intent(MainActivity.this, CrearPrestamoActivity.class);
             startActivity(i);
             finish();
             return;
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     installation.addAllUnique("channels", Arrays.asList("user_" + user.getObjectId()));
                     installation.saveInBackground();
 
-                    Intent intent = new Intent(MainActivity.this, Profile.class);
+                    Intent intent = new Intent(MainActivity.this, CrearPrestamoActivity.class);
                     startActivity(intent);
                     finish();
                     Toast toast1 = Toast.makeText(getApplicationContext(), getResources().getString(R.string.acceso_correcto),

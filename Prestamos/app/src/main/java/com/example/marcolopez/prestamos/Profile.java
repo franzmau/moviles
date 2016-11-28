@@ -55,7 +55,39 @@ public class Profile extends Activity {
     }
 
     public void cargarAmigos(){
-        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("friends");
+        query.whereEqualTo("amigo", ParseUser.getCurrentUser().getUsername());
+        try {
+            System.out.println("contador "+query.count()+"usuario"+ParseUser.getCurrentUser().getUsername());
+            } catch (ParseException e) {
+            System.out.println("error");
+            e.printStackTrace();
+        }
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> list, ParseException e) {
+                if (e == null) {
+
+                    final ParseObject[] objects = list.toArray(new ParseObject[list.size()]);
+
+                    ParseObject[] dataList = new ParseObject[list.size()];
+                    for (int i = 0; i < list.size(); i++) {
+                        dataList[i] = (ParseObject) list.get(i);
+                    }
+                    System.out.println("ayuda "+dataList);
+                    AmigosAdapter adapter = new AmigosAdapter(Profile.this,
+                            R.layout.item_amigos, objects, icons[0]);
+                    listaAmigos.setDivider(new ColorDrawable(0xFFFFFF));
+                    listaAmigos.setDividerHeight(1);
+                    listaAmigos.setAdapter(adapter);
+
+
+
+                }else{
+                    System.out.println("vacio");
+                }
+            }
+        });
+        /*
         query.whereNotEqualTo("username", ParseUser.getCurrentUser().getUsername());
         query.findInBackground(new FindCallback<ParseUser>() {
             public void done(List<ParseUser> list, ParseException e) {
@@ -76,6 +108,7 @@ public class Profile extends Activity {
                 }
             }
         });
+    */
     }
 
     public void buildMenuFloating(){
