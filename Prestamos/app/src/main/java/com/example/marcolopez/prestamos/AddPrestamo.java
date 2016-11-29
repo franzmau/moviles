@@ -1,7 +1,9 @@
 package com.example.marcolopez.prestamos;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -26,20 +29,94 @@ import java.util.Date;
  * Created by mauricio on 16/11/16.
  */
 
+
 public class AddPrestamo extends AppCompatActivity {
+    TextView name_l;
+    TextView quantity;
+    TextView pagado;
+    Double debe;
+    Double paga;
+    String idstring;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editprestamo);
         Button button = (Button) findViewById(R.id.pagar);
         Intent i = getIntent();
-        Log.e("TAG", i.getStringExtra("stringID"));
+         idstring=i.getStringExtra("stringID");
+        name_l=(TextView) findViewById(R.id.amigo_pago);
+        pagado=(TextView) findViewById(R.id.pagad);
+        quantity = (TextView) findViewById(R.id.pago_ca);
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("prestamos");
+        query.getInBackground(i.getStringExtra("stringID"), new GetCallback<ParseObject>() {
+            public void done(ParseObject object, ParseException e) {
+                if (e == null) {
+                    name_l.setText((String) object.get("borrower"));
+                    name_l.setFocusable(false);
+                    debe=object.getDouble("deuda")-object.getDouble("parcial");
+
+                  double pago=debe;
+                   pagado.setText(String.valueOf(pago));
+                    pagado.setFocusable(false);
+                } else {
+                    // something went wrong
+                }
+            }
+        });
+
+
+
+
+
+
+
+
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Inicio de sesión
-                TextView name_l = (TextView) findViewById(R.id.amigo_pago);
-                TextView quantity = (TextView) findViewById(R.id.pago_ca);
+                paga =Double.parseDouble(quantity.getText().toString());
+
+                    if(paga>debe){
+                        Toast.makeText(AddPrestamo.this, "No te deben tanto", Toast.LENGTH_LONG).show();
+                    }
+
+                new AlertDialog.Builder(AddPrestamo.this)
+                        .setTitle("Registrar pago")
+                        .setMessage("Estas seguro que quieres registrar el pago de $"+paga+"?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                ParseQuery<ParseObject> query = ParseQuery.getQuery("prestamos");
+                                query.getInBackground(idstring, new GetCallback<ParseObject>() {
+                                    public void done(ParseObject object, ParseException e) {
+                                        if (e == null) {
+                                            // Now let's update it with some new data. In this case, only cheatMode and score
+                                            // will get sent to the Parse Cloud. playerName hasn't changed.
+                                            object.put("parcial", paga);
+                                            if(paga==debe){
+                                            object.put("pagado", true);
+                                            }
+                                            object.saveInBackground();
+
+                                        }
+                                    }
+                                });
+                                Intent i=new Intent(AddPrestamo.this, Deudas.class);
+                                startActivity(i);
+
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+
+
 
 
             /*
@@ -83,7 +160,7 @@ public class AddPrestamo extends AppCompatActivity {
                         } else {
 
                             Log.i("Registro", "" + e.getMessage());
-                            Toast.makeText(AddPrestamo.this, "No se pudo registrar", Toast.LENGTH_LONG).show();
+
                         }
                     }
                 });
