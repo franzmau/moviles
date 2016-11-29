@@ -150,8 +150,8 @@ public class Profile extends Activity {
             }
         });
         FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(Profile.this)
-                .setStartAngle(200)
-                .setEndAngle(100)
+                .setStartAngle(180)
+                .setEndAngle(270)
                 .addSubActionView(button2)
                 .addSubActionView(button3)
                 .addSubActionView(button4)
