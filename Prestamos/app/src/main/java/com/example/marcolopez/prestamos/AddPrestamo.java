@@ -32,6 +32,8 @@ public class AddPrestamo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editprestamo);
         Button button = (Button) findViewById(R.id.pagar);
+        Intent i = getIntent();
+        Log.e("TAG", i.getStringExtra("stringID"));
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,8 +41,7 @@ public class AddPrestamo extends AppCompatActivity {
                 TextView name_l = (TextView) findViewById(R.id.amigo_pago);
                 TextView quantity = (TextView) findViewById(R.id.pago_ca);
 
-                Intent i = getIntent();
-                    System.out.println(" lalal este es el intent"+i.getSerializableExtra("objeto") +" \n");
+
             /*
 
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("prestamos");

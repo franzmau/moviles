@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -65,15 +66,17 @@ public class Deudas extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                Object o = prestamos.getItemAtPosition(position);
+                String stringID = objects[position].getObjectId();
                 Intent intent= new Intent(Deudas.this, AddPrestamo.class);
-                intent.putExtra("objeto", (Serializable) o);
+                intent.putExtra("stringID", stringID);
                 startActivity(intent);
 
-                  //Toast.makeText(getBaseContext(),o.toString(),Toast.LENGTH_SHORT).show();
+                  //Toast.makeText(getBaseContext(),,Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+    ParseObject[] objects;
 
     public void cargarprestamos(){
         ParseQuery<ParseObject> query = ParseQuery.getQuery("prestamos");
@@ -82,7 +85,7 @@ public class Deudas extends AppCompatActivity {
             public void done(List<ParseObject> list, ParseException e) {
                 if (e == null) {
 
-                    final ParseObject[] objects = list.toArray(new ParseObject[list.size()]);
+                    objects = list.toArray(new ParseObject[list.size()]);
                     ParseObject[] dataList = new ParseObject[list.size()];
                     for (int i = 0; i < list.size(); i++) {
                         dataList[i] = (ParseObject) list.get(i);
@@ -101,7 +104,6 @@ public class Deudas extends AppCompatActivity {
 
     public void cargardeudas(){
         ParseQuery<ParseObject> query = ParseQuery.getQuery("prestamos");
-
         query.whereEqualTo("borrower", ParseUser.getCurrentUser().getUsername());
         query.findInBackground(new FindCallback<ParseObject>() {
 
@@ -111,6 +113,7 @@ public class Deudas extends AppCompatActivity {
 
                     final ParseObject[] objects = list.toArray(new ParseObject[list.size()]);
                     ParseObject[] dataList = new ParseObject[list.size()];
+
                     for (int i = 0; i < list.size(); i++) {
                         dataList[i] = (ParseObject) list.get(i);
 
