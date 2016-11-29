@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     installation.addAllUnique("channels", Arrays.asList("user_" + user.getObjectId()));
                     installation.saveInBackground();
 
-                    Intent intent = new Intent(MainActivity.this, CrearPrestamoActivity.class);
+                    Intent intent = new Intent(MainActivity.this, Deudas.class);
                     startActivity(intent);
                     finish();
                     Toast toast1 = Toast.makeText(getApplicationContext(), getResources().getString(R.string.acceso_correcto),
