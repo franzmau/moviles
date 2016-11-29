@@ -16,6 +16,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class Deudas extends AppCompatActivity {
@@ -65,7 +66,11 @@ public class Deudas extends AppCompatActivity {
                                     int position, long id) {
 
                 Object o = prestamos.getItemAtPosition(position);
-                  Toast.makeText(getBaseContext(),o.toString(),Toast.LENGTH_SHORT).show();
+                Intent intent= new Intent(Deudas.this, AddPrestamo.class);
+                intent.putExtra("objeto", (Serializable) o);
+                startActivity(intent);
+
+                  //Toast.makeText(getBaseContext(),o.toString(),Toast.LENGTH_SHORT).show();
             }
         });
     }
