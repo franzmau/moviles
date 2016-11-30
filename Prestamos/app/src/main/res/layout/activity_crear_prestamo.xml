@@ -15,9 +15,6 @@
         android:orientation="vertical"
         android:background="@drawable/background_crear">
 
-
-
-
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="40dp"

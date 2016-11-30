@@ -120,20 +120,15 @@ public class Profile extends Activity {
         itemGuest.setImageResource(R.mipmap.invoice);
         ImageView itemPeople = new ImageView(this);
         itemPeople.setImageResource(R.mipmap.ic_launcher);
+        ImageView amigosImage = new ImageView(this);
+        itemPeople.setImageResource(R.mipmap.ic_launcher);
 
-
+        SubActionButton button1 = itemBuilder.setContentView(amigosImage).build();
         SubActionButton button2 = itemBuilder.setContentView(itemEvent).build();
         SubActionButton button3 = itemBuilder.setContentView(itemGuest).build();
         SubActionButton button4 = itemBuilder.setContentView(itemPeople).build();
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Profile.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-            }
-        });
-        button3.setOnClickListener(new View.OnClickListener() {
+
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Profile.this, Deudas.class);
@@ -141,10 +136,26 @@ public class Profile extends Activity {
                 startActivity(intent);
             }
         });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Profile.this, CrearPrestamoActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Profile.this, Profile.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Profile.this, RegistroActivity.class);
+                Intent intent = new Intent(Profile.this, AgregarAmigoActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
@@ -152,6 +163,7 @@ public class Profile extends Activity {
         FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(Profile.this)
                 .setStartAngle(180)
                 .setEndAngle(270)
+                .addSubActionView(button1)
                 .addSubActionView(button2)
                 .addSubActionView(button3)
                 .addSubActionView(button4)

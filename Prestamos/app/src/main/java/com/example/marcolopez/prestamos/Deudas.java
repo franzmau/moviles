@@ -66,12 +66,12 @@ public class Deudas extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                String stringID = objects[position].getObjectId();
+               /* String stringID = objects[position].getObjectId();
                 Intent intent= new Intent(Deudas.this, AddPrestamo.class);
                 intent.putExtra("stringID", stringID);
-                startActivity(intent);
+                startActivity(intent);*/
 
-                  //Toast.makeText(getBaseContext(),,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),,Toast.LENGTH_SHORT).show();
             }
         });
     }

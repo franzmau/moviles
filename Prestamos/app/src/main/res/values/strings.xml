@@ -7,5 +7,6 @@
     <string name="cargando">Cargando</string>
     <string name="title_activity_profile">Profile</string>
     <string name="aceptar">Aceptar</string>
+    <string name="title_activity_agregar_amigo">AgregarAmigoActivity</string>
 
 </resources>
