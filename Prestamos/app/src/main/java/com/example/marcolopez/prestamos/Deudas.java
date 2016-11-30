@@ -1,5 +1,6 @@
 package com.example.marcolopez.prestamos;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -24,7 +25,7 @@ import com.parse.ParseUser;
 import java.io.Serializable;
 import java.util.List;
 
-public class Deudas extends AppCompatActivity {
+public class Deudas extends Activity {
 
     ListView deudas;
     ListView prestamos;
@@ -62,13 +63,6 @@ public class Deudas extends AppCompatActivity {
                 return;
             }
         });
-
-
-
-
-
-
-
 
         prestamos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
