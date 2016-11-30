@@ -116,7 +116,7 @@ public class CrearPrestamoActivity extends Activity {
 
     public void buildMenuFloating(){
         SubActionButton.Builder itemBuilder = new SubActionButton.Builder(CrearPrestamoActivity.this)
-                .setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.button_action, null));
+                .setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), R.mipmap.menu_copia, null));
         ImageView itemEvent = new ImageView(this);
         itemEvent.setImageResource(R.mipmap.dinero_copia);
         ImageView itemGuest = new ImageView(this);
