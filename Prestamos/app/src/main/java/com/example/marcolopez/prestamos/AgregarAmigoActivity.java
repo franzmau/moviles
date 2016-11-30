@@ -9,18 +9,24 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.res.ResourcesCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
+import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import java.util.List;
 
 
 public class AgregarAmigoActivity extends Activity {
@@ -48,6 +54,7 @@ public class AgregarAmigoActivity extends Activity {
                 progress = ProgressDialog.show(AgregarAmigoActivity.this, "",
                         "Cargando...", true);
                 if(!usernameEdtTxt.getText().toString().equals("")){
+
                     getUser(usernameEdtTxt.getText().toString());
                 }else{
                     progress.cancel();
@@ -70,20 +77,27 @@ public class AgregarAmigoActivity extends Activity {
     }
 
     public void getUser(final String username){
-        ParseQuery userQuery = new ParseQuery("User");
-        userQuery.whereEqualTo("username", username);
 
-        userQuery.getFirstInBackground(new GetCallback<ParseObject>() {
-            public void done(ParseObject friend, ParseException e) {
+        ParseQuery <ParseUser> query =ParseUser.getQuery();
+        query.whereEqualTo("username",username);
+        query.findInBackground(new FindCallback<ParseUser>() {
+            public void done(List<ParseUser> objects, ParseException e) {
                 if (e == null) {
-                    if (friend != null){
-                        addFriend(username);
-                    }
-                }else{
-                    System.out.println("vacio");
+                        if(!objects.isEmpty()){
+
+                    addFriend(username);
+                        }
+                    else{
+                    Toast.makeText(AgregarAmigoActivity.this, "Amigo no encontrado", Toast.LENGTH_SHORT).show();
+                    progress.cancel();
+                        }
+                } else {
+                    // Something went wrong.
+
                 }
             }
         });
+
 
     }
 
@@ -97,6 +111,9 @@ public class AgregarAmigoActivity extends Activity {
             public void done(ParseException e) {
                 if (e == null) {
                     progress.cancel();
+                    Toast.makeText(AgregarAmigoActivity.this, "Amigo Agregado", Toast.LENGTH_SHORT).show();
+                    Intent i=new Intent(AgregarAmigoActivity.this, Profile.class);
+                    startActivity(i);
                 }
             }
         });
