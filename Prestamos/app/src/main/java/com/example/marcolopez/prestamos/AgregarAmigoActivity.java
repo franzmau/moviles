@@ -1,24 +1,20 @@
 package com.example.marcolopez.prestamos;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
-import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -26,9 +22,8 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import java.util.List;
 
-public class AgregarAmigoActivity extends AppCompatActivity {
+public class AgregarAmigoActivity extends Activity {
 
     LinearLayout agregarAmigoLyt;
     EditText usernameEdtTxt;
@@ -40,8 +35,6 @@ public class AgregarAmigoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_amigo);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         agregarAmigoLyt = (LinearLayout) findViewById(R.id.agregarAmigoLyt);
         usernameEdtTxt = (EditText) findViewById(R.id.usernameEdtTxt);
@@ -169,5 +162,4 @@ public class AgregarAmigoActivity extends AppCompatActivity {
                 .build();
         actionMenu.getActionViewCenter();
     }
-
 }

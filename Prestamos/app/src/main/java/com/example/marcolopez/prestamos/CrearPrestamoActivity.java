@@ -1,5 +1,6 @@
 package com.example.marcolopez.prestamos;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.provider.ContactsContract;
@@ -35,7 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CrearPrestamoActivity extends AppCompatActivity {
+public class CrearPrestamoActivity extends Activity {
 
     ImageView btnFloatMenu;
 
@@ -45,11 +46,8 @@ public class CrearPrestamoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_crear_prestamo);
         Button button = (Button) findViewById(R.id.send);
         btnFloatMenu = (ImageView) findViewById(R.id.btnMenuFloat);
-
         buildMenuFloating();
-
         final Spinner amigos = (Spinner) findViewById(R.id.amigo);
-
         ParseQuery<ParseObject> query = ParseQuery.getQuery("friends");
         query.whereEqualTo("amigo", ParseUser.getCurrentUser().getUsername());
 
@@ -69,8 +67,6 @@ public class CrearPrestamoActivity extends AppCompatActivity {
                 }
             }
         });
-
-
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
