@@ -59,7 +59,7 @@
                     android:layout_gravity="bottom"
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="15dp"
-                    android:src="@drawable/background_menu"
+                    android:src="@mipmap/menu_copia"
                     android:id="@+id/btnMenuFloat"/>
             </LinearLayout>
         </RelativeLayout>

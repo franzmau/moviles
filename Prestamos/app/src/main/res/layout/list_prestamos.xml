@@ -1,32 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent" >
 
-    <TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
         <ImageView
             android:id="@+id/imgp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:src="@mipmap/menu_copia"/>
 
         <TextView
             android:id="@+id/nombreAmigoTxtp"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp" />
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent"
+            android:text="NOMBRE" />
 
-    </TableRow>
-
-    <TableRow>
         <TextView
             android:id="@+id/cantidadp"
-            android:layout_width="130dp"
-            android:layout_height="50dp"/>
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="VALUE"/>
 
         <TextView
             android:id="@+id/tiempop"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp" />
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent"
+            android:text="VALUE" />
+    </LinearLayout>
 
-    </TableRow>
 
-</TableLayout>
+</LinearLayout>
