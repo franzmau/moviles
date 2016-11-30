@@ -38,16 +38,18 @@ public class AddPrestamo extends AppCompatActivity {
     Double paga;
     String idstring;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {/*
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editprestamo);
+
+       /*
         Button button = (Button) findViewById(R.id.pagar);
         Intent i = getIntent();
          idstring=i.getStringExtra("stringID");
         name_l=(TextView) findViewById(R.id.amigo_pago);
         pagado=(TextView) findViewById(R.id.pagad);
         quantity = (TextView) findViewById(R.id.pago_ca);
-
+        /*
         ParseQuery<ParseObject> query = ParseQuery.getQuery("prestamos");
         query.getInBackground(i.getStringExtra("stringID"), new GetCallback<ParseObject>() {
             public void done(ParseObject object, ParseException e) {
@@ -113,7 +115,7 @@ public class AddPrestamo extends AppCompatActivity {
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .show();
 
-    */
+
 
 
             /*
@@ -162,8 +164,8 @@ public class AddPrestamo extends AppCompatActivity {
                     }
                 });
                     */
-        /*
-            }
-        });*/
+
+           // }
+        //});
     }
 }

@@ -68,12 +68,12 @@ public class Deudas extends Activity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-               /* String stringID = objects[position].getObjectId();
-                Intent intent= new Intent(Deudas.this, AddPrestamo.class);
+                String stringID = objects[position].getObjectId();
+                Intent intent= new Intent(Deudas.this, PagarActivity.class);
                 intent.putExtra("stringID", stringID);
-                startActivity(intent);*/
+                startActivity(intent);
 
-                //Toast.makeText(getBaseContext(),,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),stringID,Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -83,6 +83,7 @@ public class Deudas extends Activity {
     public void cargarprestamos(){
         ParseQuery<ParseObject> query = ParseQuery.getQuery("prestamos");
         query.whereEqualTo("lender", ParseUser.getCurrentUser().getUsername());
+        query.whereEqualTo("pagado",false);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> list, ParseException e) {
                 if (e == null) {
@@ -107,6 +108,7 @@ public class Deudas extends Activity {
     public void cargardeudas(){
         ParseQuery<ParseObject> query = ParseQuery.getQuery("prestamos");
         query.whereEqualTo("borrower", ParseUser.getCurrentUser().getUsername());
+        query.whereEqualTo("pagado",false);
         query.findInBackground(new FindCallback<ParseObject>() {
 
             public void done(List<ParseObject> list, ParseException e) {

@@ -63,12 +63,14 @@ public class DeudasAdapter extends ArrayAdapter<ParseObject> {
 
            if(get_i()==0) {
                holder.nombrede.setText(data[position].getString("lender"));
-               holder.cantidad.setText(data[position].getInt("deuda"));
+               String a=String.valueOf(data[position].getInt("deuda")-data[position].getInt("parcial"));
+
+               holder.cantidad.setText(a);
                ImageView imageView = (ImageView) row.findViewById(R.id.imgd);
                imageView.setImageResource(imageId);
            }else {
                holder.nombrep.setText(data[position].getString("borrower"));
-                String a=String.valueOf(data[position].getInt("deuda"));
+               String a=String.valueOf(data[position].getInt("deuda")-data[position].getInt("parcial"));
 
                holder.cantidap.setText(a);
                ImageView imageView = (ImageView) row.findViewById(R.id.imgp);

@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageView;
@@ -24,8 +26,11 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Profile extends Activity {
     ImageView btnFloatMenu;
@@ -34,6 +39,8 @@ public class Profile extends Activity {
     Integer [] icons={
             R.drawable.male
     };
+
+
 
 
     @Override
@@ -59,7 +66,12 @@ public class Profile extends Activity {
                 return;
             }
         });
+
+
+
     }
+
+
 
     public void cargarAmigos(){
         ParseQuery<ParseObject> query = ParseQuery.getQuery("friends");
@@ -165,3 +177,7 @@ public class Profile extends Activity {
 
 
 }
+
+
+
+
