@@ -4,7 +4,6 @@
     android:id="@+id/activity_crear_prestamo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorGris"
     android:orientation="vertical"
     tools:context="com.example.marcolopez.prestamos.CrearPrestamoActivity">
 
@@ -14,9 +13,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/background_crear">
-
-
-
 
         <Spinner
             android:layout_width="match_parent"
@@ -109,4 +105,17 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="end">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/background_menu"
+            android:id="@+id/btnMenuFloat"/>
+    </LinearLayout>
 </LinearLayout>

@@ -38,7 +38,7 @@ public class AddPrestamo extends AppCompatActivity {
     Double paga;
     String idstring;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {/*
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editprestamo);
         Button button = (Button) findViewById(R.id.pagar);
@@ -64,9 +64,6 @@ public class AddPrestamo extends AppCompatActivity {
                 }
             }
         });
-
-
-
 
 
 
@@ -116,7 +113,7 @@ public class AddPrestamo extends AppCompatActivity {
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .show();
 
-
+    */
 
 
             /*
@@ -165,7 +162,8 @@ public class AddPrestamo extends AppCompatActivity {
                     }
                 });
                     */
+        /*
             }
-        });
+        });*/
     }
 }

@@ -3,6 +3,7 @@ package com.example.marcolopez.prestamos;
 import android.content.Intent;
 import android.database.Cursor;
 import android.provider.ContactsContract;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,11 +11,14 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
+import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -33,12 +37,16 @@ import java.util.Map;
 
 public class CrearPrestamoActivity extends AppCompatActivity {
 
+    ImageView btnFloatMenu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_prestamo);
         Button button = (Button) findViewById(R.id.send);
+        btnFloatMenu = (ImageView) findViewById(R.id.btnMenuFloat);
 
+        buildMenuFloating();
 
         final Spinner amigos = (Spinner) findViewById(R.id.amigo);
 
@@ -110,5 +118,65 @@ public class CrearPrestamoActivity extends AppCompatActivity {
 
     }
 
+    public void buildMenuFloating(){
+        SubActionButton.Builder itemBuilder = new SubActionButton.Builder(CrearPrestamoActivity.this)
+                .setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.button_action, null));
+        ImageView itemEvent = new ImageView(this);
+        itemEvent.setImageResource(R.mipmap.ic_launcher);
+        ImageView itemGuest = new ImageView(this);
+        itemGuest.setImageResource(R.mipmap.invoice);
+        ImageView itemPeople = new ImageView(this);
+        itemPeople.setImageResource(R.mipmap.ic_launcher);
+        ImageView amigosImage = new ImageView(this);
+        itemPeople.setImageResource(R.mipmap.ic_launcher);
+
+        SubActionButton button1 = itemBuilder.setContentView(amigosImage).build();
+        SubActionButton button2 = itemBuilder.setContentView(itemEvent).build();
+        SubActionButton button3 = itemBuilder.setContentView(itemGuest).build();
+        SubActionButton button4 = itemBuilder.setContentView(itemPeople).build();
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CrearPrestamoActivity.this, Deudas.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CrearPrestamoActivity.this, CrearPrestamoActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CrearPrestamoActivity.this, Profile.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CrearPrestamoActivity.this, AgregarAmigoActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+        FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(CrearPrestamoActivity.this)
+                .setStartAngle(180)
+                .setEndAngle(270)
+                .addSubActionView(button1)
+                .addSubActionView(button2)
+                .addSubActionView(button3)
+                .addSubActionView(button4)
+                .attachTo(btnFloatMenu)
+                .build();
+        actionMenu.getActionViewCenter();
+    }
 
 }
