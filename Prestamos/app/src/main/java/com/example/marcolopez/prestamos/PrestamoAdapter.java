@@ -1,6 +1,7 @@
 package com.example.marcolopez.prestamos;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,8 @@ public class PrestamoAdapter extends ArrayAdapter<ParseObject> {
         }
         holder.nombrede.setText(data[position].getString("lender"));
         holder.cantidad.setText(data[position].getString("deuda"));
+        Log.e("fecha", String.valueOf(data[position].getDate("fechapago")));
+        holder.tiempo.setText(String.valueOf( data[position].getDate("fechapago")));
         ImageView imageView=(ImageView) row.findViewById(R.id.imgp);
         imageView.setImageResource(imageId);
         return row;

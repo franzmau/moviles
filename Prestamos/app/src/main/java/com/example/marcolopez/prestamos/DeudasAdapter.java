@@ -1,6 +1,7 @@
 package com.example.marcolopez.prestamos;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +30,7 @@ public class DeudasAdapter extends ArrayAdapter<ParseObject> {
         this.layoutResourceId = layoutResourceId;
         this.imageId = imageId;
         this.i=i;
-        for (int ih=0;ih<data.length;ih++){
-            System.out.println(data[ih].getDouble("deuda")+" aqui estan los datos");
-        }
+
     }
 
     @Override
@@ -71,7 +70,10 @@ public class DeudasAdapter extends ArrayAdapter<ParseObject> {
            }else {
                holder.nombrep.setText(data[position].getString("borrower"));
                String a=String.valueOf(data[position].getInt("deuda")-data[position].getInt("parcial"));
-
+               String fecha=String.valueOf( data[position].getDate("fechapago"));
+                fecha= fecha.substring(4,10);
+               Log.e(fecha, "fecha");
+               holder.tiempop.setText(fecha);
                holder.cantidap.setText(a);
                ImageView imageView = (ImageView) row.findViewById(R.id.imgp);
                imageView.setImageResource(imageId);
