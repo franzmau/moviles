@@ -3,14 +3,18 @@ package com.example.marcolopez.prestamos;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
+import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -25,6 +29,8 @@ public class Deudas extends AppCompatActivity {
     ListView deudas;
     ListView prestamos;
     TextView logoutTxt;
+    ImageView btnFloatMenu;
+
     Integer [] debess={
             R.drawable.debes
     };
@@ -39,8 +45,10 @@ public class Deudas extends AppCompatActivity {
         deudas = (ListView) findViewById(R.id.debes);
         prestamos=(ListView)findViewById(R.id.te_deben);
         logoutTxt = (TextView) findViewById(R.id.logoutTxt);
+        btnFloatMenu = (ImageView) findViewById(R.id.btnMenuFloat);
 
-       cargardeudas();
+        buildMenuFloating();
+        cargardeudas();
         cargarprestamos();
 
         logoutTxt.setOnClickListener(new View.OnClickListener() {
@@ -130,5 +138,65 @@ public class Deudas extends AppCompatActivity {
         });
     }
 
+    public void buildMenuFloating(){
+        SubActionButton.Builder itemBuilder = new SubActionButton.Builder(Deudas.this)
+                .setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.button_action, null));
+        ImageView itemEvent = new ImageView(this);
+        itemEvent.setImageResource(R.mipmap.ic_launcher);
+        ImageView itemGuest = new ImageView(this);
+        itemGuest.setImageResource(R.mipmap.invoice);
+        ImageView itemPeople = new ImageView(this);
+        itemPeople.setImageResource(R.mipmap.ic_launcher);
+        ImageView amigosImage = new ImageView(this);
+        itemPeople.setImageResource(R.mipmap.ic_launcher);
+
+        SubActionButton button1 = itemBuilder.setContentView(amigosImage).build();
+        SubActionButton button2 = itemBuilder.setContentView(itemEvent).build();
+        SubActionButton button3 = itemBuilder.setContentView(itemGuest).build();
+        SubActionButton button4 = itemBuilder.setContentView(itemPeople).build();
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Deudas.this, Deudas.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Deudas.this, CrearPrestamoActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Deudas.this, Profile.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Deudas.this, AgregarAmigoActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+        FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(Deudas.this)
+                .setStartAngle(180)
+                .setEndAngle(270)
+                .addSubActionView(button1)
+                .addSubActionView(button2)
+                .addSubActionView(button3)
+                .addSubActionView(button4)
+                .attachTo(btnFloatMenu)
+                .build();
+        actionMenu.getActionViewCenter();
+    }
 
 }

@@ -1,13 +1,17 @@
 package com.example.marcolopez.prestamos;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,6 +24,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class Profile extends Activity {
@@ -29,6 +34,8 @@ public class Profile extends Activity {
     Integer [] icons={
             R.drawable.male
     };
+
+   
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,28 +94,12 @@ public class Profile extends Activity {
                 }
             }
         });
-        /*
-        query.whereNotEqualTo("username", ParseUser.getCurrentUser().getUsername());
-        query.findInBackground(new FindCallback<ParseUser>() {
-            public void done(List<ParseUser> list, ParseException e) {
-                if (e == null) {
 
-                    final ParseObject[] objects = list.toArray(new ParseObject[list.size()]);
-                    ParseObject[] dataList = new ParseObject[list.size()];
-                    for (int i = 0; i < list.size(); i++) {
-                        dataList[i] = (ParseObject) list.get(i);
-                    }
-                    AmigosAdapter adapter = new AmigosAdapter(Profile.this,
-                            R.layout.item_amigos, objects, icons[0]);
-                    listaAmigos.setDivider(new ColorDrawable(0xFFFFFF));
-                    listaAmigos.setDividerHeight(1);
-                    listaAmigos.setAdapter(adapter);
 
-                }else{
-                }
-            }
-        });
-    */
+
+
+
+
     }
 
     public void buildMenuFloating(){
