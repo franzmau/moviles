@@ -118,13 +118,13 @@ public class CrearPrestamoActivity extends Activity {
         SubActionButton.Builder itemBuilder = new SubActionButton.Builder(CrearPrestamoActivity.this)
                 .setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.button_action, null));
         ImageView itemEvent = new ImageView(this);
-        itemEvent.setImageResource(R.mipmap.ic_launcher);
+        itemEvent.setImageResource(R.mipmap.dinero_copia);
         ImageView itemGuest = new ImageView(this);
-        itemGuest.setImageResource(R.mipmap.invoice);
+        itemGuest.setImageResource(R.mipmap.dar_copia);
         ImageView itemPeople = new ImageView(this);
-        itemPeople.setImageResource(R.mipmap.ic_launcher);
+        itemPeople.setImageResource(R.mipmap.gente_copia);
         ImageView amigosImage = new ImageView(this);
-        itemPeople.setImageResource(R.mipmap.ic_launcher);
+        itemPeople.setImageResource(R.mipmap.people_copia);
 
         SubActionButton button1 = itemBuilder.setContentView(amigosImage).build();
         SubActionButton button2 = itemBuilder.setContentView(itemEvent).build();
