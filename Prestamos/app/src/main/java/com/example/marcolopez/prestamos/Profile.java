@@ -35,7 +35,7 @@ public class Profile extends Activity {
             R.drawable.male
     };
 
-   
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
